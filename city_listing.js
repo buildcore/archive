@@ -1,3 +1,5 @@
+// https://en.wikipedia.org/wiki/List_of_communes_in_France_with_over_20,000_inhabitants
+
 function city_listing() {
   var cities = []; 
   var table = document.getElementsByClassName('wikitable sortable');
