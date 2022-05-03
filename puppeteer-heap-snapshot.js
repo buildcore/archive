@@ -1,3 +1,6 @@
+// https://github.com/adriancooney/puppeteer-heap-snapshot
+// https://www.adriancooney.ie/blog/web-scraping-via-javascript-heap-snapshots
+
 const puppeteer = require('puppeteer');
 
 (async () => {
