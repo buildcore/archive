@@ -1,0 +1,38 @@
+document.addEventListener("mouseup", function(e) {
+  var selection = window.getSelection().toString();
+  if (selection.length > 0) {
+    var tooltip = document.createElement("div");
+    tooltip.classList.add("tooltip");
+
+    var twitter = document.createElement("img");
+    twitter.src = "twitter.png";
+    twitter.addEventListener("click", function() {
+      window.open(
+        "https://twitter.com/intent/tweet?text=" + encodeURIComponent(selection)
+      );
+    });
+    tooltip.appendChild(twitter);
+
+    var discord = document.createElement("img");
+    discord.src = "discord.png";
+    discord.addEventListener("click", function() {
+      window.open(
+        "https://discord.com/api/oauth2/authorize?client_id=12345678&scope=bot&permissions=0"
+      );
+    });
+    tooltip.appendChild(discord);
+
+    document.body.appendChild(tooltip);
+
+    tooltip.style.left = e.pageX + 10 + "px";
+    tooltip.style.top = e.pageY + 10 + "px";
+    tooltip.style.opacity = 1;
+  }
+});
+
+document.addEventListener("mousedown", function() {
+  var tooltips = document.querySelectorAll(".tooltip");
+  for (var i = 0; i < tooltips.length; i++) {
+    tooltips[i].remove();
+  }
+});
