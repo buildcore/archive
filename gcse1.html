@@ -40,6 +40,19 @@ const cx = "";
               function(err) { console.error("Execute error", err); });
   }
   gapi.load("client");
+  
+  var checkGapiInterval = setInterval(function() {
+    if (typeof(gapi) == 'undefined') {
+        console.log('gApi is undefined, will try later')
+    } else if (typeof(gapi.client) == 'undefined') {
+        console.log('gApi.client is undefined, will try later')
+    } else {
+        clearInterval(checkGapiInterval);
+        gapi.client.load(that.API_NAME, that.API_VERSION, function() {
+            resolve();
+        }, that.GAPI_ENDPOINT)
+    }
+}, 1000)
 </script>
 <button onclick="loadClient()">load</button>
 <button onclick="execute()">execute</button>
